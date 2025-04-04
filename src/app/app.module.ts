@@ -19,6 +19,10 @@ import { ActorCreateComponent } from './feature/actor/actor-create/actor-create.
 import { ActorEditComponent } from './feature/actor/actor-edit/actor-edit.component';
 import { ActorDetailComponent } from './feature/actor/actor-detail/actor-detail.component';
 import { MenuComponent } from './core/menu/menu.component';
+import { CreditListComponent } from './feature/credit/credit-list/credit-list.component';
+import { CreditCreateComponent } from './feature/credit/credit-create/credit-create.component';
+import { CreditDetailComponent } from './feature/credit/credit-detail/credit-detail.component';
+import { CreditEditComponent } from './feature/credit/credit-edit/credit-edit.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,10 @@ import { MenuComponent } from './core/menu/menu.component';
     ActorEditComponent,
     ActorDetailComponent,
     MenuComponent,
+    CreditListComponent,
+    CreditCreateComponent,
+    CreditDetailComponent,
+    CreditEditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideHttpClient(withInterceptorsFromDi())],

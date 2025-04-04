@@ -9,6 +9,10 @@ import { ActorCreateComponent } from './feature/actor/actor-create/actor-create.
 import { ActorDetailComponent } from './feature/actor/actor-detail/actor-detail.component';
 import { ActorEditComponent } from './feature/actor/actor-edit/actor-edit.component';
 import { ActorListComponent } from './feature/actor/actor-list/actor-list.component';
+import { CreditCreateComponent } from './feature/credit/credit-create/credit-create.component';
+import { CreditDetailComponent } from './feature/credit/credit-detail/credit-detail.component';
+import { CreditEditComponent } from './feature/credit/credit-edit/credit-edit.component';
+import { CreditListComponent } from './feature/credit/credit-list/credit-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/actor-list', pathMatch: 'full' },
@@ -20,6 +24,10 @@ const routes: Routes = [
   { path: 'actor-create', component: ActorCreateComponent },
   { path: 'actor-edit/:id', component: ActorEditComponent },
   { path: 'actor-detail/:id', component: ActorDetailComponent },
+  { path: 'credit-list', component: CreditListComponent },
+  { path: 'credit-create', component: CreditCreateComponent },
+  { path: 'credit-edit/:id', component: CreditEditComponent },
+  { path: 'credit-detail/:id', component: CreditDetailComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
