@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Movie } from '../../../model/movie';
 import { Subscription } from 'rxjs';
 import { MovieService } from '../../../service/movie.service';
+import { SystemService } from '../../../service/system.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -14,9 +15,10 @@ export class MovieListComponent implements OnInit, OnDestroy {
   movies!: Movie[];
   subscription!: Subscription;
 
-  constructor(private movieSvc: MovieService) {}
+  constructor(private movieSvc: MovieService, private sysSvc: SystemService) {}
 
   ngOnInit(): void {
+    console.log('logged in user:', this.sysSvc.loggedInUser);
     this.subscription = this.movieSvc.list().subscribe((resp) => {
       this.movies = resp;
     });
@@ -34,9 +36,9 @@ export class MovieListComponent implements OnInit, OnDestroy {
         });
       },
       error: (err) => {
-        console.log('Error deleting movie for id: '+id);
-        alert('Error deleting movie for id: '+id);
-      }
+        console.log('Error deleting movie for id: ' + id);
+        alert('Error deleting movie for id: ' + id);
+      },
     });
   }
 }
