@@ -55,7 +55,7 @@
       </tr>
     </table>
   </main>
-  <span>
+  <span *ngIf="this.isAdmin">
     <span
       ><a routerLink="/movie-edit/{{ movie.id }}" class="btn btn-sm btn-warning"
         >Edit</a

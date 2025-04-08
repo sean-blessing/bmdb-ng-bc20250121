@@ -26,10 +26,13 @@ export class UserLoginComponent implements OnInit, OnDestroy {
     private sysSvc: SystemService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userLogin.username = 'hgilmore';
+    this.userLogin.password = 'hockey';
+  }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 
   login() {

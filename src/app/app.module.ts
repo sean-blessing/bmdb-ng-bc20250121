@@ -24,6 +24,7 @@ import { CreditCreateComponent } from './feature/credit/credit-create/credit-cre
 import { CreditDetailComponent } from './feature/credit/credit-detail/credit-detail.component';
 import { CreditEditComponent } from './feature/credit/credit-edit/credit-edit.component';
 import { UserLoginComponent } from './feature/user/user-login/user-login.component';
+import { MovieCreditsComponent } from './feature/movie/movie-credits/movie-credits.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { UserLoginComponent } from './feature/user/user-login/user-login.compone
     CreditDetailComponent,
     CreditEditComponent,
     UserLoginComponent,
+    MovieCreditsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideHttpClient(withInterceptorsFromDi())],

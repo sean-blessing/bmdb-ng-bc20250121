@@ -3,39 +3,46 @@ import { Subscription } from 'rxjs';
 import { Movie } from '../../../model/movie';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../../service/movie.service';
+import { SystemService } from '../../../service/system.service';
+import { User } from '../../../model/user';
 
 @Component({
   selector: 'app-movie-detail',
   standalone: false,
   templateUrl: './movie-detail.component.html',
-  styleUrl: './movie-detail.component.css'
+  styleUrl: './movie-detail.component.css',
 })
-export class MovieDetailComponent implements OnInit, OnDestroy{
-    title: string = 'Movie-Detail';
-    movieId!: number;
-    movie!: Movie;
-    subscription!: Subscription;
+export class MovieDetailComponent implements OnInit, OnDestroy {
+  title: string = 'Movie-Detail';
+  movieId!: number;
+  movie!: Movie;
+  subscription!: Subscription;
+  loggedInUser!: User;
+  isAdmin: boolean = false;
 
-    constructor(
-      private movieSvc: MovieService,
-      private router: Router,
-      private actRoute: ActivatedRoute
-    ) {}
-    
+  constructor(
+    private movieSvc: MovieService,
+    private router: Router,
+    private actRoute: ActivatedRoute,
+    private sysSvc: SystemService
+  ) {}
+
   ngOnInit(): void {
-        // get the movieId from the URL
-        this.actRoute.params.subscribe((parms) => {
-          this.movieId = parms['id'];
-          // get the movie for the id
-          this.subscription = this.movieSvc.getById(this.movieId).subscribe({
-            next: (resp) => {
-              this.movie = resp;
-            },
-            error: (err) => {
-              console.log('Error retrieving movie: ', err);
-            },
-          });
-        });
+    this.loggedInUser = this.sysSvc.loggedInUser;
+    this.isAdmin = this.loggedInUser.admin;
+    // get the movieId from the URL
+    this.actRoute.params.subscribe((parms) => {
+      this.movieId = parms['id'];
+      // get the movie for the id
+      this.subscription = this.movieSvc.getById(this.movieId).subscribe({
+        next: (resp) => {
+          this.movie = resp;
+        },
+        error: (err) => {
+          console.log('Error retrieving movie: ', err);
+        },
+      });
+    });
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -48,8 +55,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy{
       },
       error: (err) => {
         console.log(err);
-      }
-  });
+      },
+    });
   }
-
 }
