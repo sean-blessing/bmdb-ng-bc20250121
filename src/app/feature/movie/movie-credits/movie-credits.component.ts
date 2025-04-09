@@ -31,7 +31,7 @@ export class MovieCreditsComponent implements OnInit, OnDestroy {
     // 2 - get the movie for the movieId
     // 3 - get a list of movies
     // 4 - get the credits for the movieId
-    // * we gotta do these in order! 1, then 2, then 3
+    // * we gotta do these in order! 1, then 2, then 3 and 4
     this.actRoute.params.subscribe((parms) => {
       this.movieId = parms['id'];
       this.subscription = this.movieSvc.getById(this.movieId).subscribe({
@@ -54,15 +54,15 @@ export class MovieCreditsComponent implements OnInit, OnDestroy {
             console.log('Error retrieving credits for movie: ', err);
           },
         });
-      this.subscription = this.movieSvc.list().subscribe({
-        next: (resp) => {
-          this.movies = resp;
-          console.log('MCC.movies - ', this.movies);
-        },
-        error: (err) => {
-          console.log('Error retrieving movies: ', err);
-        },
-      });
+    });
+    this.subscription = this.movieSvc.list().subscribe({
+      next: (resp) => {
+        this.movies = resp;
+        console.log('MCC.movies - ', this.movies);
+      },
+      error: (err) => {
+        console.log('Error retrieving movies: ', err);
+      },
     });
   }
   ngOnDestroy(): void {
@@ -75,15 +75,15 @@ export class MovieCreditsComponent implements OnInit, OnDestroy {
 
   refreshCredits() {
     this.subscription = this.creditSvc
-        .getCreditsForMovieId(this.movie.id)
-        .subscribe({
-          next: (resp) => {
-            this.credits = resp;
-            console.log('MCC.credits - ', this.credits);
-          },
-          error: (err) => {
-            console.log('Error retrieving credits for movie: ', err);
-          },
-        });
+      .getCreditsForMovieId(this.movie.id)
+      .subscribe({
+        next: (resp) => {
+          this.credits = resp;
+          console.log('MCC.credits - ', this.credits);
+        },
+        error: (err) => {
+          console.log('Error retrieving credits for movie: ', err);
+        },
+      });
   }
 }

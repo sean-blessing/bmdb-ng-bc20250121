@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="p-4">
   <section class="heading">
     <span class="page-title font-weight-bold font-italic">{{ title }}</span>
@@ -11,17 +12,17 @@
       font-weight: bold;
     ">{{ welcomeMsg }}</span>
   </section>
-  <table class="table table-striped table-hover">
+  <table *ngIf="movies" class="table table-striped table-hover">
     <thead>
-      <th>Id</th>
-      <th>Title</th>
-      <th>Year</th>
-      <th>Rating</th>
-      <th>Director</th>
+      <th><a (click)="sortBy('id')">Id</a></th>
+      <th><a (click)="sortBy('id')">Title</a></th>
+      <th><a (click)="sortBy('id')">Year</a></th>
+      <th><a (click)="sortBy('id')">Rating</a></th>
+      <th><a (click)="sortBy('id')">Director</a></th>
       <th>Action</th>
     </thead>
     <tbody>
-      <tr *ngFor="let m of movies">
+      <tr *ngFor="let m of movies | sort: sortCriteria: sortOrder">
         <td>{{ m.id }}</td>
         <td>{{ m.title }}</td>
         <td>{{ m.year }}</td>
