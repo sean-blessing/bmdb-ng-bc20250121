@@ -35,4 +35,8 @@ export class CreditService {
   getCreditsForMovieId(movieId: number): Observable<Credit[]> {
     return this.http.get(URL + '/movie-credits/'+movieId) as Observable<Credit[]>;
   }
+
+  getCreditsForActorId(actorId: number): Observable<Credit[]> {
+    return this.http.get(URL + '/actor-films/'+actorId) as Observable<Credit[]>;
+  }
 }

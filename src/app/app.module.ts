@@ -26,6 +26,7 @@ import { CreditEditComponent } from './feature/credit/credit-edit/credit-edit.co
 import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 import { MovieCreditsComponent } from './feature/movie/movie-credits/movie-credits.component';
 import { SortPipe } from './pipe/sort.pipe';
+import { ActorFilmographyComponent } from './feature/actor/actor-filmography/actor-filmography.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { SortPipe } from './pipe/sort.pipe';
     UserLoginComponent,
     MovieCreditsComponent,
     SortPipe,
+    ActorFilmographyComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideHttpClient(withInterceptorsFromDi())],
